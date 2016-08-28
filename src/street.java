@@ -10,24 +10,39 @@ import javax.swing.JFrame;
 
 public class street extends JComponent {
 
+	int avenueGarzaSada = 960;
+	int avenueRevolucion = 540;
 
 	public static void main(String[] args){
 		JFrame window = new JFrame();
 	    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    window.setBounds(0, 0, 1920, 1080);
 	    window.getContentPane().add(new street());
+	    window.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+	    window.setUndecorated(true);
 	    window.setVisible(true);
+	    window.getContentPane().setBackground(new Color(56,94,43));
+	    
 	}
 	
 	
 	
 	public void paint(Graphics g) {
-		avenue4ln2wVer(960,705,500,g);
-		avenue4ln2wVer(960,-125,500,g);
-		avenue4ln2wHor(-205,540,1000,g);
-		avenue4ln2wHor(1125,540,1000,g);
+		avenue4ln2wVer(avenueGarzaSada,705,500,g);
+		avenue4ln2wVer(avenueGarzaSada,-125,500,g);
+		avenue4ln2wHor(-205,avenueRevolucion,1000,g);
+		avenue4ln2wHor(1125,avenueRevolucion,1000,g);
 		g.setColor(Color.darkGray);
 		g.fillRect(795, 375, 330, 330);
+		g.fillRect(775, 355, 20, 20);
+		g.fillRect(795+330, 375+330, 20, 20);
+		g.fillRect(795-20, 375+330, 20, 20);
+		g.fillRect(795+330, 375-20, 20, 20);
+		g.setColor(Color.gray);
+		g.fillArc(795-40, 375-40, 40, 40, 270, 90);
+		g.fillArc(795+330, 375+330, 40, 40, 90, 90);
+		g.fillArc(795-40, 375+330, 40, 40,0,90);
+		g.fillArc(795+330, 375-40, 40, 40,180,90);
 	}
 
 
@@ -104,6 +119,9 @@ public class street extends JComponent {
 		}
 		g.setColor(new Color(102,205,0));
 		g.fillRect(x-5, y, 10, Longitude);
+		g.setColor(Color.gray);
+		g.fillRect(x+330/2, y+20, 20, Longitude-40);
+		g.fillRect(x-330/2-20, y+20, 20, Longitude-40);
 		g.setColor(Color.white);
 		g.fillRect(x+5, y, 160, 5);
 		g.setColor(Color.white);
@@ -184,9 +202,13 @@ public class street extends JComponent {
 			g.fillRect(x+Longitude-25, y+5+i, 20, 5);
 			g.fillRect(x+Longitude-25, y-160+i, 20, 5);
 		}
+		g.setColor(Color.gray);
+		g.fillRect(x+20, y+330/2, Longitude-40, 20);
+		g.fillRect(x+20, y-330/2-20, Longitude-40, 20);
 		g.setColor(Color.white);
 		g.fillRect(x, y-330/2, 5, 160);
 		g.fillRect(x+Longitude-5, y+5, 5, 160);
+		
 	}
 	
 }
